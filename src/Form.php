@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace polarnix\Formify;
+namespace Formify;
 
 use DOMDocument;
 use DOMElement;
-use polarnix\Formify\Field\Field;
+use Formify\Field;
 
 class Form {
     private $action;
@@ -19,12 +19,13 @@ class Form {
         $this->fields = [];
     }
 
-    public function field(array $attr): Field {
-        $field = new Field($attr);
+    public function field(): Field {
+        $field = new Field;
+        $this->fields[] = $field;
         return $field;
     }
 
-    public function render(): DOMElement {
+    public function render() {
         $doc = new DOMDocument();
         $html = $doc->createElement('form');
 
@@ -40,9 +41,11 @@ class Form {
 
         foreach($this->fields as $field) {
             $input = $field->render();
-            $html->appendChild($input);
+            $import = $doc->importNode($input, true);
+            $html->appendChild($import);
         }
 
-        return $html;
+        $doc->appendChild($html);
+        echo $doc->saveHTML();
     }
 }
