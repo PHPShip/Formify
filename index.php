@@ -18,4 +18,10 @@ $form->field()
      ->style('border border-blue-100') // tailwindcss classes work here!
      ->value('example@gmail.com');
 
+$form->field()
+     ->name('fullName')
+     ->type('text')
+     ->style('border border-blue-100')
+     ->value('polarnix');
+
 $form->render();
