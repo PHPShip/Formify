@@ -1,0 +1,18 @@
+{
+    "name": "polarnix/formify",
+    "description": "A simple library for generating HTML5 forms",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Polarnix\\Formify\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "polarnix",
+            "email": "polarnix@pm.me"
+        }
+    ],
+    "require": {}
+}
