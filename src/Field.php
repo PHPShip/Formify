@@ -19,22 +19,22 @@ class Field {
         $this->value = isset($attr['value']) ? $attr['value'] : '';
     }
 
-    public function name($name): object {
+    public function name($name): self {
         $this->name = $name;
         return $this;
     }
 
-    public function type($type): object {
+    public function type($type): self {
         $this->type = $type;
         return $this;
     }
 
-    public function style($style): object {
+    public function style($style): self {
         $this->style = $style;
         return $this;
     }
 
-    public function value($value): object {
+    public function value($value): self {
         $this->value = $value;
         return $this;
     }
