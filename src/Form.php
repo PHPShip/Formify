@@ -63,7 +63,7 @@ class Form {
      * @return void
      * @throws \DOMException
      */
-    public function render() {
+    public function render(): void {
         $doc = new DOMDocument();
         $html = $doc->createElement('form');
 

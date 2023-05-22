@@ -6,7 +6,7 @@ use DOMDocument;
 
 class Field {
     /**
-     * The name that will be used in HTML to specify this field.
+     * The string value that will be assigned to the field's `name` attribute.
      *
      * @var string
      */
@@ -95,7 +95,7 @@ class Field {
      * @return mixed
      * @throws \DOMException
      */
-    public function render() {
+    public function render(): mixed {
         $doc = new DOMDocument();
         $input_elm = $doc->createElement('input');
         

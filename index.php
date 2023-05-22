@@ -28,8 +28,5 @@ $form->field()
     ->type('submit')
     ->value('submit');
 
-try {
-    $form->render();
-} catch (DOMException $e) {
-    echo "Failed to render form: $e";
-}
+// add error handling in the lib
+$form->render();
