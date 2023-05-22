@@ -3,8 +3,6 @@
 namespace Formify;
 
 use DOMDocument;
-use DOMElement;
-use DOMEntity;
 
 class Field {
     private $name;

@@ -3,8 +3,6 @@
 namespace Formify;
 
 use DOMDocument;
-use DOMElement;
-use Formify\Field;
 
 class Form {
     private $action;
