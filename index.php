@@ -24,4 +24,12 @@ $form->field()
      ->style('border border-blue-100')
      ->value('polarnix');
 
-$form->render();
+$form->field()
+    ->type('submit')
+    ->value('submit');
+
+try {
+    $form->render();
+} catch (DOMException $e) {
+    echo "Failed to render form: $e";
+}
