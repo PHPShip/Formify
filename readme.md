@@ -28,3 +28,10 @@ $form->render();
 
 ### Installation
 Coming soon
+
+### TODO
+[] Add placeholder support
+[] Add error handling
+
+### Contributing
+Feel free to make a PR
