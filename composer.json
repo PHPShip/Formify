@@ -14,5 +14,8 @@
             "email": "polarnix@pm.me"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">7.0",
+        "ext-dom": "*"
+    }
 }
