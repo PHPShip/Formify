@@ -5,11 +5,39 @@ namespace Formify;
 use DOMDocument;
 
 class Field {
+    /**
+     * The name that will be used in HTML to specify this field.
+     *
+     * @var string
+     */
     private $name;
+
+    /**
+     * The type of the field, e.g. text or checkbox.
+     *
+     * @var string
+     */
     private $type;
+
+    /**
+     * The string value that will be assigned to the field's `class` attribute.
+     *
+     * @var string
+     */
     private $style;
+
+    /**
+     * The string value that will be assigned to the field's `value` attribute.
+     *
+     * @var string
+     */
     private $value;
 
+    /**
+     * Construct a new Field.
+     *
+     * @param array<string, string> $attr
+     */
     public function __construct(array $attr = []) {
         $this->name = $attr['name'] ?? '';
         $this->type = $attr['type'] ?? 'text';
@@ -17,26 +45,56 @@ class Field {
         $this->value = $attr['value'] ?? '';
     }
 
+    /**
+     * Alter the name attribute.
+     *
+     * @param string $name
+     * @return $this
+     */
     public function name($name): self {
         $this->name = $name;
         return $this;
     }
 
+    /**
+     * Alter the type attribute.
+     *
+     * @param string $type
+     * @return $this
+     */
     public function type($type): self {
         $this->type = $type;
         return $this;
     }
 
+    /**
+     * Alter the class attribute.
+     *
+     * @param string $style
+     * @return $this
+     */
     public function style($style): self {
         $this->style = $style;
         return $this;
     }
 
+    /**
+     * Alter the value attribute.
+     *
+     * @param string $value
+     * @return $this
+     */
     public function value($value): self {
         $this->value = $value;
         return $this;
     }
 
+    /**
+     * Compile the Field into an element.
+     *
+     * @return mixed
+     * @throws \DOMException
+     */
     public function render() {
         $doc = new DOMDocument();
         $input_elm = $doc->createElement('input');
