@@ -30,8 +30,8 @@ $form->render();
 Coming soon
 
 ### TODO
-- [] Add placeholder support
-- [] Add error handling
+- [ ] Add placeholder support
+- [ ] Add error handling
 
 ### Contributing
 Feel free to make a PR
