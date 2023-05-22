@@ -13,10 +13,10 @@ class Field {
     private $value;
 
     public function __construct(array $attr = []) {
-        $this->name = isset($attr['name']) ? $attr['name'] : '';
-        $this->type = isset($attr['type']) ? $attr['type'] : 'text';
-        $this->style = isset($attr['class']) ? $attr['class'] : '';
-        $this->value = isset($attr['value']) ? $attr['value'] : '';
+        $this->name = $attr['name'] ?? '';
+        $this->type = $attr['type'] ?? 'text';
+        $this->style = $attr['class'] ?? '';
+        $this->value = $attr['value'] ?? '';
     }
 
     public function name($name): self {

@@ -13,9 +13,9 @@ class Form {
     private $fields;
 
     public function __construct(array $config = []) {
-        $this->action = isset($config['action']) ? $config['action'] : '';
+        $this->action = $config['action'] ?? '';
         $this->method = isset($config['method']) ? strtoupper($config['method']) : 'POST';
-        $this->enctype = isset($config['enctype']) ? $config['enctype'] : 'multipart/form-data';
+        $this->enctype = $config['enctype'] ?? 'multipart/form-data';
         $this->fields = [];
     }
 
