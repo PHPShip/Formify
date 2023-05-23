@@ -119,7 +119,8 @@ class Field
 
             $doc->appendChild($input_elm);
             return $doc->documentElement;
-        } catch (\DOMException|\Exception $e) {
+        } 
+        catch (\DOMException|\Exception $e) {
             echo "An error occurred while rendering the field: " . $e->getMessage();
             return null;
         }

@@ -93,7 +93,8 @@ class Form
 
             $doc->appendChild($html);
             echo $doc->saveHTML();
-        } catch (\DOMException|\Exception $e) {
+        } 
+        catch (\DOMException|\Exception $e) {
             echo "An error occurred while rendering the form: " . $e->getMessage();
         }
     }
