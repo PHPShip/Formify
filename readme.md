@@ -1,6 +1,6 @@
 # Formify
 
-A simple PHP library for generating HTML5 forms
+A simple PHP library for generating HTML5 forms. Don't forget to leave a star!
 
 ### Example
 
@@ -31,4 +31,4 @@ $form->render();
 Coming soon
 
 ### Contributing
-Feel free to make a PR
+Feel free to make a PR or open a new issue with the "feature request" tag.
