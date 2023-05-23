@@ -11,33 +11,33 @@ class Field
      *
      * @var string
      */
-    private $name;
+    private string $name;
 
     /**
      * The type of the field, e.g. text or checkbox.
      *
      * @var string
      */
-    private $type;
+    private string $type;
 
     /**
      * The string value that will be assigned to the field's `class` attribute.
      *
      * @var string
      */
-    private $style;
+    private string $style;
 
     /**
      * The string value that will be assigned to the field's `value` attribute.
      *
      * @var string
      */
-    private $value;
+    private string $value;
 
     /**
      * @var string
      */
-    private $placeholder;
+    private string $placeholder;
 
     /**
      * Construct a new Field.
