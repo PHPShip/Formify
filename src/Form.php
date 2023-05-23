@@ -4,7 +4,8 @@ namespace Formify;
 
 use DOMDocument;
 
-class Form {
+class Form
+{
     /**
      * The PHP file (action) this form should go to.
      *
@@ -38,7 +39,8 @@ class Form {
      *
      * @param non-empty-array<string, string> $config
      */
-    public function __construct(array $config = []) {
+    public function __construct(array $config = [])
+    {
         $this->action = $config['action'] ?? '';
         $this->method = isset($config['method']) ? strtoupper($config['method']) : 'POST';
         $this->enctype = $config['enctype'] ?? 'multipart/form-data';
@@ -48,10 +50,11 @@ class Form {
     /**
      * Construct a new `Field` and return it.
      *
-     * @see Field
      * @return Field
+     * @see Field
      */
-    public function field(): Field {
+    public function field(): Field
+    {
         $field = new Field;
         $this->fields[] = $field;
         return $field;
@@ -61,29 +64,37 @@ class Form {
      * Renders the form to the view, so it can be sent to the browser.
      *
      * @return void
-     * @throws \DOMException
      */
-    public function render(): void {
-        $doc = new DOMDocument();
-        $html = $doc->createElement('form');
+    public function render(): void
+    {
+        try {
+            $doc = new DOMDocument();
+            $html = $doc->createElement('form');
 
-        $attributes = [
-            'action' => $this->action,
-            'method' => $this->method,
-            'enctype' => $this->enctype
-        ];
+            $attributes = [
+                'action' => $this->action,
+                'method' => $this->method,
+                'enctype' => $this->enctype
+            ];
 
-        foreach($attributes as $name => $value) {
-            $html->setAttribute($name, $value);
+            foreach ($attributes as $name => $value) {
+                $html->setAttribute($name, $value);
+            }
+
+            foreach ($this->fields as $field) {
+                $input = $field->render();
+                if ($field === null) {
+                    continue;
+                }
+
+                $import = $doc->importNode($input, true);
+                $html->appendChild($import);
+            }
+
+            $doc->appendChild($html);
+            echo $doc->saveHTML();
+        } catch (\DOMException|\Exception $e) {
+            echo "An error occurred while rendering the form: " . $e->getMessage();
         }
-
-        foreach($this->fields as $field) {
-            $input = $field->render();
-            $import = $doc->importNode($input, true);
-            $html->appendChild($import);
-        }
-
-        $doc->appendChild($html);
-        echo $doc->saveHTML();
     }
 }

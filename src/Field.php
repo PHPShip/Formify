@@ -4,7 +4,8 @@ namespace Formify;
 
 use DOMDocument;
 
-class Field {
+class Field
+{
     /**
      * The string value that will be assigned to the field's `name` attribute.
      *
@@ -38,7 +39,8 @@ class Field {
      *
      * @param array<string, string> $attr
      */
-    public function __construct(array $attr = []) {
+    public function __construct(array $attr = [])
+    {
         $this->name = $attr['name'] ?? '';
         $this->type = $attr['type'] ?? 'text';
         $this->style = $attr['class'] ?? '';
@@ -51,7 +53,8 @@ class Field {
      * @param string $name
      * @return $this
      */
-    public function name($name): self {
+    public function name($name): self
+    {
         $this->name = $name;
         return $this;
     }
@@ -62,7 +65,8 @@ class Field {
      * @param string $type
      * @return $this
      */
-    public function type($type): self {
+    public function type($type): self
+    {
         $this->type = $type;
         return $this;
     }
@@ -73,7 +77,8 @@ class Field {
      * @param string $style
      * @return $this
      */
-    public function style($style): self {
+    public function style($style): self
+    {
         $this->style = $style;
         return $this;
     }
@@ -84,7 +89,8 @@ class Field {
      * @param string $value
      * @return $this
      */
-    public function value($value): self {
+    public function value($value): self
+    {
         $this->value = $value;
         return $this;
     }
@@ -93,24 +99,30 @@ class Field {
      * Compile the Field into an element.
      *
      * @return mixed
-     * @throws \DOMException
      */
-    public function render(): mixed {
-        $doc = new DOMDocument();
-        $input_elm = $doc->createElement('input');
-        
-        $attributes = [
-            'name' => $this->name,
-            'type' => $this->type,
-            'class' => $this->style,
-            'value' => $this->value
-        ];
+    public function render(): mixed
+    {
+        try {
+            $doc = new DOMDocument();
+            $input_elm = $doc->createElement('input');
 
-        foreach($attributes as $name => $value) {
-            $input_elm->setAttribute($name, $value);
+            $attributes = [
+                'name' => $this->name,
+                'type' => $this->type,
+                'class' => $this->style,
+                'value' => $this->value
+            ];
+
+            foreach ($attributes as $name => $value) {
+                $input_elm->setAttribute($name, $value);
+            }
+
+            $doc->appendChild($input_elm);
+            return $doc->documentElement;
+        } catch (\DOMException|\Exception $e) {
+            echo "An error occurred while rendering the field: " . $e->getMessage();
+            return null;
         }
-
-        $doc->appendChild($input_elm);
-        return $doc->documentElement;
     }
+
 }

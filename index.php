@@ -28,5 +28,4 @@ $form->field()
     ->type('submit')
     ->value('submit');
 
-// add error handling in the lib
 $form->render();
