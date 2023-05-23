@@ -6,44 +6,12 @@ use DOMDocument;
 
 class Field
 {
-    /**
-     * The string value that will be assigned to the field's `name` attribute.
-     *
-     * @var string
-     */
     private string $name;
-
-    /**
-     * The type of the field, e.g. text or checkbox.
-     *
-     * @var string
-     */
     private string $type;
-
-    /**
-     * The string value that will be assigned to the field's `class` attribute.
-     *
-     * @var string
-     */
     private string $style;
-
-    /**
-     * The string value that will be assigned to the field's `value` attribute.
-     *
-     * @var string
-     */
     private string $value;
-
-    /**
-     * @var string
-     */
     private string $placeholder;
 
-    /**
-     * Construct a new Field.
-     *
-     * @param array<string, string> $attr
-     */
     public function __construct(array $attr = [])
     {
         $this->name = $attr['name'] ?? '';
@@ -53,72 +21,36 @@ class Field
         $this->value = $attr['value'] ?? '';
     }
 
-    /**
-     * Alter the name attribute.
-     *
-     * @param string $name
-     * @return $this
-     */
     public function name(string $name): self
     {
         $this->name = $name;
         return $this;
     }
 
-    /**
-     * Alter the placeholder attribute.
-     *
-     * @param string $placeholder
-     * @return $this
-     */
     public function placeholder(string $placeholder): self
     {
         $this->placeholder = $placeholder;
         return $this;
     }
 
-    /**
-     * Alter the type attribute.
-     *
-     * @param string $type
-     * @return $this
-     */
     public function type(string $type): self
     {
         $this->type = $type;
         return $this;
     }
 
-    /**
-     * Alter the class attribute.
-     *
-     * @param string $style
-     * @return $this
-     */
     public function style(string $style): self
     {
         $this->style = $style;
         return $this;
     }
 
-    /**
-     * Alter the value attribute.
-     *
-     * @param string $value
-     * @return $this
-     */
     public function value(string $value): self
     {
         $this->value = $value;
         return $this;
     }
 
-    /**
-     * Compile the Field into an element.
-     *
-     * @return mixed
-     * @throws \DOMException
-     */
     public function render(): mixed
     {
         $doc = new DOMDocument();

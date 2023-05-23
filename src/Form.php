@@ -4,66 +4,30 @@ namespace Formify;
 
 use DOMDocument;
 
-class Form {
-    /**
-     * The PHP file (action) this form should go to.
-     *
-     * @var string
-     */
-    private $action;
+class Form 
+{
+    private string $action;
+    private string $method;
+    private string $enctype;
+    private array $fields;
 
-    /**
-     * The HTTP method the form should use to reach the action.
-     *
-     * @var string
-     */
-    private $method;
-
-    /**
-     * The type of encoding the form data should be encoded with.
-     *
-     * @var string
-     */
-    private $enctype;
-
-    /**
-     * The fields that are in this form.
-     *
-     * @var array<int, Field>
-     */
-    private $fields;
-
-    /**
-     * Construct a new Form.
-     *
-     * @param non-empty-array<string, string> $config
-     */
-    public function __construct(array $config = []) {
+    public function __construct(array $config = []) 
+    {
         $this->action = $config['action'] ?? '';
         $this->method = isset($config['method']) ? strtoupper($config['method']) : 'POST';
         $this->enctype = $config['enctype'] ?? 'multipart/form-data';
         $this->fields = [];
     }
 
-    /**
-     * Construct a new `Field` and return it.
-     *
-     * @see Field
-     * @return Field
-     */
-    public function field(): Field {
+    public function field(): Field 
+    {
         $field = new Field;
         $this->fields[] = $field;
         return $field;
     }
 
-    /**
-     * Renders the form to the view, so it can be sent to the browser.
-     *
-     * @return void
-     * @throws \DOMException
-     */
-    public function render(): void {
+    public function render(): void 
+    {
         $doc = new DOMDocument();
         $html = $doc->createElement('form');
 
