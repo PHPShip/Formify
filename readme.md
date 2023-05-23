@@ -21,6 +21,7 @@ $form->field()
      ->name('emailAddress')
      ->type('email')
      ->style('border border-blue-100') // tailwindcss classes work here!
+     ->placeholder('Enter your email address')
      ->value('example@gmail.com');
 
 $form->render();
@@ -28,10 +29,6 @@ $form->render();
 
 ### Installation
 Coming soon
-
-### TODO
-- [ ] Add placeholder support
-- [ ] Add error handling
 
 ### Contributing
 Feel free to make a PR
