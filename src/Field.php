@@ -45,17 +45,18 @@ class Field
         return $this;
     }
 
-    public function value(string $value): self {
+    public function value(string $value): self
+    {
         $this->value = $value;
         return $this;
     }
 
-    public function render(): mixed 
+    public function render(): mixed
     {
         try {
             $doc = new DOMDocument();
             $input_elm = $doc->createElement('input');
-            
+
             $attributes = [
                 'name' => $this->name,
                 'type' => $this->type,
@@ -64,13 +65,15 @@ class Field
                 'placeholder' => $this->placeholder
             ];
 
-            foreach($attributes as $name => $value) {
-                $input_elm->setAttribute($name, $value);
+            foreach ($attributes as $name => $value) {
+                if (empty($value) === false) {
+                    $input_elm->setAttribute($name, $value);
+                }
             }
 
             $doc->appendChild($input_elm);
             return $doc->documentElement;
-        } 
+        }
         catch (\DOMException|\Exception $e) {
             echo "An error occurred while rendering the field: " . $e->getMessage();
             return null;
