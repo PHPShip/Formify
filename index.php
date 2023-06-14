@@ -26,6 +26,8 @@ $form->field()
      ->style('border border-blue-100')
      ->value('polarnix');
 
+$form->field()->name('randomFieldTest');
+
 $form->field()
     ->type('submit')
     ->value('submit');
